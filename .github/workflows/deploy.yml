@@ -1,9 +1,6 @@
 # This workflow deploys the static site to GitHub Pages
 #
 # It triggers on pushes to the main branch.
-#
-# For more information on GitHub Actions see:
-# https://docs.github.com/en/actions
 
 name: Deploy to GitHub Pages
 
@@ -36,13 +33,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Or your preferred Node.js version
+          node-version: '20' # Use a recent LTS version
 
       - name: Install dependencies
-        run: npm install # Or yarn install, or pnpm install, depending on your project
+        run: npm install
 
       - name: Build
-        run: npm run build # Or yarn build, or pnpm build, depending on your project and build script
+        run: npm run build # Replace with your build command, e.g., 'npm run build', 'gulp build', etc.
+        env:
+          BASE_URL: ${{ github.event.repository.name }} # Set base URL for relative paths if needed
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -51,8 +50,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire build directory
-          path: './dist' # Or your build output directory, e.g., 'public', 'build'
+          path: './dist' # Replace with your build output directory, e.g., 'dist', 'build', etc.
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v3
