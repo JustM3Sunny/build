@@ -15,6 +15,7 @@ body {
   background-color: #f8f8f8; /* Light gray background */
   color: #333; /* Dark gray text */
   margin: 0; /* Reset default body margin for full width */
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
 /* Header Styles */
@@ -300,7 +301,32 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  /* Adjustments for large screens */
+  .header-container,
+  .classes-container,
+  .instructors-container,
+  .footer-container {
+    max-width: 960px; /* Reduce max-width for smaller large screens */
+  }
+}
+
+@media (max-width: 992px) {
+  /* Adjustments for medium screens */
+  .header-container,
+  .classes-container,
+  .instructors-container,
+  .footer-container {
+    max-width: 720px; /* Reduce max-width for medium screens */
+  }
+
+  .hero-title {
+    font-size: 2.75rem; /* Slightly smaller hero title */
+  }
+}
+
 @media (max-width: 768px) {
+  /* Adjustments for small screens */
   .hero-title {
     font-size: 2.5rem;
   }
@@ -321,6 +347,70 @@ body {
 
   .instructors-grid {
     grid-template-columns: 1fr; /* Single column on small screens */
+  }
+
+  .schedule-table {
+    display: block; /* Make table responsive */
+    overflow-x: auto;
+  }
+
+  .schedule-table thead,
+  .schedule-table tbody,
+  .schedule-table th,
+  .schedule-table td,
+  .schedule-table tr {
+    display: block;
+  }
+
+  .schedule-table th {
+    text-align: right;
+  }
+
+  .schedule-table td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .schedule-table td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  /* Define data-label values for each column */
+  .schedule-table td:nth-of-type(1):before { content: "Time"; }
+  .schedule-table td:nth-of-type(2):before { content: "Monday"; }
+  .schedule-table td:nth-of-type(3):before { content: "Tuesday"; }
+  .schedule-table td:nth-of-type(4):before { content: "Wednesday"; }
+  .schedule-table td:nth-of-type(5):before { content: "Thursday"; }
+  .schedule-table td:nth-of-type(6):before { content: "Friday"; }
+  .schedule-table td:nth-of-type(7):before { content: "Saturday"; }
+  .schedule-table td:nth-of-type(8):before { content: "Sunday"; }
+}
+
+@media (max-width: 576px) {
+  /* Further adjustments for extra small screens */
+  .hero-title {
+    font-size: 2rem; /* Even smaller hero title */
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .header-logo {
+    font-size: 1.25rem; /* Smaller logo */
+  }
+
+  .header-nav a {
+    margin-top: 0.25rem; /* Less margin for nav links */
   }
 }
 

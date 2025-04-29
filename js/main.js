@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
       { name: 'Restorative Yoga', time: '6:00 PM', description: 'Relaxing and rejuvenating session.' }
     ];
 
+    // Clear existing content before adding new classes
+    classesContainer.innerHTML = '';
+
     classesData.forEach(classInfo => {
       const classElement = document.createElement('div');
       // Added 'w-full' for full width on all screens, 'md:w-1/2' for half width on medium screens and up, 'lg:w-1/3' for one-third width on large screens and up
@@ -54,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
       classesContainer.appendChild(classElement);
     });
     // Added flex and flex-wrap to the classes container to allow items to wrap responsively
-    classesContainer.classList.add('flex', 'flex-wrap');
+    classesContainer.classList.add('flex', 'flex-wrap', 'justify-center'); // Added justify-center for better alignment
   }
 
   // --- Testimonials Section ---
@@ -65,6 +68,9 @@ document.addEventListener('DOMContentLoaded', function() {
       { author: 'Jane Doe', text: 'Great yoga classes! I feel so much better.' },
       { author: 'John Smith', text: 'The instructors are amazing and very helpful.' }
     ];
+
+    // Clear existing content before adding new testimonials
+    testimonialsContainer.innerHTML = '';
 
     testimonialsData.forEach(testimonial => {
       const testimonialElement = document.createElement('div');
@@ -79,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
       testimonialsContainer.appendChild(testimonialElement);
     });
     // Added flex and flex-wrap to the testimonials container to allow items to wrap responsively
-    testimonialsContainer.classList.add('flex', 'flex-wrap');
+    testimonialsContainer.classList.add('flex', 'flex-wrap', 'justify-center'); // Added justify-center for better alignment
   }
 
   // --- Contact Form ---
@@ -112,4 +118,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
   }
+
+  // --- General Responsiveness Improvements ---
+  // Added a class to the body for global styling (example: text alignment)
+  document.body.classList.add('text-center'); // Center text by default
 });

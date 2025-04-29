@@ -20,13 +20,31 @@
     <nav class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <a href="/" class="text-2xl font-semibold text-gray-800">Yoga Studio</a>
-            <ul class="flex space-x-6">
+            <ul class="hidden md:flex space-x-6">  <!-- Hide on small screens, show on medium and up -->
                 <li><a href="/" class="text-gray-600 hover:text-gray-800">Home</a></li>
                 <li><a href="/classes.html" class="text-gray-600 hover:text-gray-800">Classes</a></li>
                 <li><a href="/about.html" class="text-gray-600 hover:text-gray-800">About</a></li>
                 <li><a href="/contact.html" class="text-gray-600 hover:text-gray-800">Contact</a></li>
             </ul>
             <a href="/book.html" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Book Now</a>
+
+            <!-- Hamburger menu for smaller screens -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-md py-2 hidden">
+            <ul class="flex flex-col items-center space-y-3">
+                <li><a href="/" class="text-gray-600 hover:text-gray-800">Home</a></li>
+                <li><a href="/classes.html" class="text-gray-600 hover:text-gray-800">Classes</a></li>
+                <li><a href="/about.html" class="text-gray-600 hover:text-gray-800">About</a></li>
+                <li><a href="/contact.html" class="text-gray-600 hover:text-gray-800">Contact</a></li>
+                <li><a href="/book.html" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Book Now</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -74,7 +92,7 @@
 
                 <!-- Class Card 3 -->
                 <div class="class-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1518611781700-4ca684f90f4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Restorative Yoga" class="w-full h-48 object-cover">
+                    <img src="https://images.unsplash.com/photo-1518611781700-4ca684f90f4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Restorative Yoga" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">Restorative Yoga</h3>
                         <p class="text-gray-600">A deeply relaxing practice that uses props to support the body and promote relaxation.</p>
@@ -100,7 +118,7 @@
 
                 <!-- Class Card 5 -->
                 <div class="class-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1547480053-76ac4f171e2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Prenatal Yoga" class="w-full h-48 object-cover">
+                    <img src="https://images.unsplash.com/photo-1547480053-76ac4f171e2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Prenatal Yoga" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">Prenatal Yoga</h3>
                         <p class="text-gray-600">A safe and gentle practice designed for pregnant women to support their physical and emotional well-being.</p>
@@ -113,7 +131,7 @@
 
                 <!-- Class Card 6 -->
                 <div class="class-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1588008479893-32725e05c576?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Yin Yoga" class="w-full h-48 object-cover">
+                    <img src="https://images.unsplash.com/photo-1588008479893-32725e05c576?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Yin Yoga" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">Yin Yoga</h3>
                         <p class="text-gray-600">A slow-paced style of yoga with poses that are held for longer periods of time, targeting the deep connective tissues.</p>
@@ -138,6 +156,14 @@
     <script>
         // Simple JavaScript for potential future enhancements (e.g., filtering classes)
         console.log("Yoga Classes page loaded.");
+
+        // Mobile menu toggle functionality
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
     </script>
 
 </body>

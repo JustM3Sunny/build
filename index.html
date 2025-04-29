@@ -38,8 +38,8 @@
     <section id="classes" class="py-16">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-indigo-800 text-center mb-8">Our Yoga Classes</h2>
-            <!-- Modified grid to be responsive -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Modified grid to be responsive using Tailwind's responsive grid system -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
                 <!-- Class Card 1 -->
                 <div class="bg-white shadow-md rounded-lg overflow-hidden">
@@ -77,10 +77,10 @@
 
     <!-- About Us Section -->
     <section id="about" class="py-16 bg-gray-50">
-        <!-- Modified flex direction to be responsive -->
-        <div class="container mx-auto flex flex-col lg:flex-row items-center">
-            <img src="images/yoga-studio.jpg" alt="Yoga Studio" class="w-full lg:w-1/2 rounded-lg shadow-md mb-8 lg:mb-0 lg:mr-8">
-            <div class="lg:w-1/2">
+        <!-- Modified flex direction to be responsive using Tailwind's flex utilities -->
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <img src="images/yoga-studio.jpg" alt="Yoga Studio" class="w-full md:w-1/2 rounded-lg shadow-md mb-8 md:mb-0 md:mr-8">
+            <div class="md:w-1/2">
                 <h2 class="text-3xl font-bold text-indigo-800 mb-4">About Our Studio</h2>
                 <p class="text-gray-700 mb-4">We are a dedicated yoga studio committed to providing a welcoming and supportive environment for all levels of practitioners. Our experienced instructors are passionate about sharing the benefits of yoga with our community.</p>
                 <p class="text-gray-700">We believe that yoga is for everyone, and we offer a variety of classes to suit different needs and preferences.</p>
@@ -93,15 +93,15 @@
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-indigo-800 text-center mb-8">Class Schedule</h2>
 
-            <!-- Modified table to be responsive -->
+            <!-- Modified table to be responsive by wrapping it in an overflow container -->
             <div class="overflow-x-auto">
                 <table class="w-full table-auto">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th class="px-4 py-2">Day</th>
-                            <th class="px-4 py-2">Time</th>
-                            <th class="px-4 py-2">Class</th>
-                            <th class="px-4 py-2">Instructor</th>
+                            <th class="px-4 py-2 text-left">Day</th>
+                            <th class="px-4 py-2 text-left">Time</th>
+                            <th class="px-4 py-2 text-left">Class</th>
+                            <th class="px-4 py-2 text-left">Instructor</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -134,6 +134,7 @@
     <section id="contact" class="py-16 bg-indigo-100">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-indigo-800 text-center mb-8">Contact Us</h2>
+            <!-- Modified form to be responsive -->
             <div class="max-w-md mx-auto">
                 <form>
                     <div class="mb-4">
