@@ -14,6 +14,19 @@ A modern web application built with Tailwind CSS for build.
 1. Clone the repository
 2. Open index.html in your browser
 
+## Deployment to GitHub Pages
+
+These instructions will guide you through deploying this project to GitHub Pages.
+
+1.  **Create a GitHub repository:** If you haven't already, create a new repository on GitHub for your project.
+2.  **Push your code:** Push your local repository to the newly created GitHub repository.
+3.  **Enable GitHub Pages:**
+    *   Go to your repository's settings on GitHub.
+    *   Navigate to the "Pages" section (usually under "Code and automation").
+    *   In the "Source" section, select the `main` branch (or your primary branch) and `/ (root)` as the folder.
+    *   Click "Save".
+4.  **Access your deployed site:** GitHub Pages will provide a URL where your site is deployed (usually `https://<username>.github.io/<repository-name>`).  It may take a few minutes for the site to deploy.
+
 ## Development
 
 This project uses:
