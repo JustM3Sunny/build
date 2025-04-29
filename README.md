@@ -1,4 +1,4 @@
-# Yoga Classes Website
+# Yoga Website
 
 A modern and fully-featured website for yoga classes, built with Tailwind CSS, HTML, and JavaScript.
 
@@ -24,7 +24,7 @@ A modern and fully-featured website for yoga classes, built with Tailwind CSS, H
 
 These instructions will guide you through deploying this project to GitHub Pages.
 
-1.  **Create a GitHub repository:** If you haven't already, create a new repository on GitHub for your project.
+1.  **Create a GitHub repository:** If you haven't already, create a new repository on GitHub for your project, named `yoga_website`.
 2.  **Push your code:** Push your local repository to the newly created GitHub repository.
 
    ```bash
@@ -40,7 +40,7 @@ These instructions will guide you through deploying this project to GitHub Pages
     *   Navigate to the "Pages" section (usually under "Code and automation").
     *   In the "Source" section, select the `main` branch (or your primary branch) and `/ (root)` as the folder.
     *   Click "Save".
-4.  **Access your deployed site:** GitHub Pages will provide a URL where your site is deployed (usually `https://<username>.github.io/<repository-name>`). It may take a few minutes for the site to deploy.
+4.  **Access your deployed site:** GitHub Pages will provide a URL where your site is deployed (usually `https://<username>.github.io/yoga_website`). It may take a few minutes for the site to deploy.
 
    **Important Note:** After enabling GitHub Pages, it might take a few minutes for your site to become live. You can check the deployment status in the "Actions" tab of your repository.  Look for a workflow named "pages build and deployment".
 
