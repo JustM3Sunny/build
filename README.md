@@ -1,18 +1,24 @@
-# build
+# Yoga Classes Website
 
-A modern web application built with Tailwind CSS for build.
+A modern and fully-featured website for yoga classes, built with Tailwind CSS, HTML, and JavaScript.
 
 ## Features
 
-- Responsive design using Tailwind CSS
-- Clean and modern UI
-- Contact form
-- Smooth scrolling navigation
+- **Responsive Design:** Fully responsive layout using Tailwind CSS, ensuring optimal viewing experience on all devices.
+- **Clean and Modern UI:** A visually appealing and user-friendly interface.
+- **Class Schedule:** Displays a detailed schedule of yoga classes, including timings, instructors, and descriptions.
+- **Instructor Profiles:** Introduces the yoga instructors with their expertise and experience.
+- **Pricing Plans:** Presents various membership and class package options.
+- **Contact Form:** Allows users to easily contact the studio for inquiries.
+- **Smooth Scrolling Navigation:** Enhances user experience with smooth transitions between sections.
+- **Image Gallery:** Showcases the studio environment and yoga poses.
+- **Testimonials:** Displays positive feedback from satisfied students.
+- **Blog (Optional):** A section for sharing yoga-related articles and tips (can be added later).
 
 ## Getting Started
 
-1. Clone the repository
-2. Open index.html in your browser
+1.  Clone the repository: `git clone <repository_url>`
+2.  Open `index.html` in your browser.
 
 ## Deployment to GitHub Pages
 
@@ -25,21 +31,21 @@ These instructions will guide you through deploying this project to GitHub Pages
     *   Navigate to the "Pages" section (usually under "Code and automation").
     *   In the "Source" section, select the `main` branch (or your primary branch) and `/ (root)` as the folder.
     *   Click "Save".
-4.  **Access your deployed site:** GitHub Pages will provide a URL where your site is deployed (usually `https://<username>.github.io/<repository-name>`).  It may take a few minutes for the site to deploy.
+4.  **Access your deployed site:** GitHub Pages will provide a URL where your site is deployed (usually `https://<username>.github.io/<repository-name>`). It may take a few minutes for the site to deploy.
 
 ## Development
 
 This project uses:
-- HTML5
-- Tailwind CSS (via CDN)
-- Vanilla JavaScript
+
+-   HTML5
+-   Tailwind CSS (via CDN)
+-   Vanilla JavaScript
 
 ## Customization
 
 To customize the Tailwind styles, you can:
-1. Use the CDN version (currently implemented)
-2. Install Tailwind via npm and create a custom build
 
-## License
+1.  Use the CDN version (currently implemented)
+2.  Install Tailwind via npm and create a custom build.  This is recommended for more advanced customization.  See the Tailwind CSS documentation for details.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## File Structure

@@ -1,90 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>build</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Classes - Find Your Inner Peace</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to custom CSS for specific styling -->
 </head>
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
-  <nav class="bg-white py-4 px-6 shadow">
-    <div class="container mx-auto flex items-center justify-between">
-      <div class="text-xl font-bold text-blue-600">build</div>
-      <div class="space-x-6">
-        <a href="#home" class="text-gray-700 hover:text-blue-600">Home</a>
-        <a href="#features" class="text-gray-700 hover:text-blue-600">Features</a>
-        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
-      </div>
-    </div>
-  </nav>
+<body class="bg-gray-100 font-sans">
 
-  <header id="home" class="bg-blue-600 py-16">
-    <div class="container mx-auto px-6 text-center">
-      <h1 class="text-4xl font-bold text-white mb-4">Welcome to build</h1>
-      <p class="text-xl text-blue-100">build</p>
-      <button class="mt-8 bg-white text-blue-600 font-bold py-2 px-6 rounded-full hover:bg-blue-100 transition duration-300">
-        Get Started
-      </button>
-    </div>
-  </header>
-
-  <section id="features" class="py-16">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Features</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <div class="text-blue-600 text-4xl mb-4">✨</div>
-          <h3 class="text-xl font-bold mb-2">Feature 1</h3>
-          <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <!-- Header Section -->
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600">Yoga Studio</a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="hover:text-indigo-500">Home</a></li>
+                    <li><a href="#classes" class="hover:text-indigo-500">Classes</a></li>
+                    <li><a href="#about" class="hover:text-indigo-500">About Us</a></li>
+                    <li><a href="#schedule" class="hover:text-indigo-500">Schedule</a></li>
+                    <li><a href="#contact" class="hover:text-indigo-500">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <div class="text-blue-600 text-4xl mb-4">🚀</div>
-          <h3 class="text-xl font-bold mb-2">Feature 2</h3>
-          <p class="text-gray-600">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-20 bg-indigo-100">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold text-indigo-800 mb-4">Find Your Inner Peace Through Yoga</h1>
+            <p class="text-lg text-gray-700 mb-8">Join our yoga classes and experience the transformative power of mindful movement.</p>
+            <a href="#classes" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full">Explore Classes</a>
         </div>
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <div class="text-blue-600 text-4xl mb-4">🔒</div>
-          <h3 class="text-xl font-bold mb-2">Feature 3</h3>
-          <p class="text-gray-600">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes" class="py-16">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-indigo-800 text-center mb-8">Our Yoga Classes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Class Card 1 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="images/yoga-class-1.jpg" alt="Yoga Class" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2">Hatha Yoga</h3>
+                        <p class="text-gray-600">A gentle and foundational practice focusing on breathwork and basic postures.</p>
+                        <a href="#" class="mt-4 block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Class Card 2 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="images/yoga-class-2.jpg" alt="Yoga Class" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2">Vinyasa Flow</h3>
+                        <p class="text-gray-600">A dynamic and flowing practice connecting breath with movement.</p>
+                        <a href="#" class="mt-4 block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Class Card 3 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="images/yoga-class-3.jpg" alt="Yoga Class" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2">Restorative Yoga</h3>
+                        <p class="text-gray-600">A deeply relaxing practice using props to support the body and promote relaxation.</p>
+                        <a href="#" class="mt-4 block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">Learn More</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="py-16 bg-gray-200">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Contact Us</h2>
-      <div class="max-w-lg mx-auto">
-        <form class="bg-white p-8 rounded-lg shadow-md">
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Your name">
-          </div>
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Your email">
-          </div>
-          <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="message">Message</label>
-            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" rows="4" placeholder="Your message"></textarea>
-          </div>
-          <div class="flex items-center justify-center">
-            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300" type="button">
-              Send Message
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <img src="images/yoga-studio.jpg" alt="Yoga Studio" class="w-full md:w-1/2 rounded-lg shadow-md mb-8 md:mb-0 md:mr-8">
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-indigo-800 mb-4">About Our Studio</h2>
+                <p class="text-gray-700 mb-4">We are a dedicated yoga studio committed to providing a welcoming and supportive environment for all levels of practitioners. Our experienced instructors are passionate about sharing the benefits of yoga with our community.</p>
+                <p class="text-gray-700">We believe that yoga is for everyone, and we offer a variety of classes to suit different needs and preferences.</p>
+            </div>
+        </div>
+    </section>
 
-  <footer class="bg-white py-8">
-    <div class="container mx-auto px-6 text-center">
-      <p class="text-gray-600">© 2025 build. All rights reserved.</p>
-    </div>
-  </footer>
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-16">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-indigo-800 text-center mb-8">Class Schedule</h2>
 
-  <!-- Add the main.js file -->
-  <script src="js/main.js"></script>
+            <table class="w-full table-auto">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="px-4 py-2">Day</th>
+                        <th class="px-4 py-2">Time</th>
+                        <th class="px-4 py-2">Class</th>
+                        <th class="px-4 py-2">Instructor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">Monday</td>
+                        <td class="border px-4 py-2">9:00 AM - 10:00 AM</td>
+                        <td class="border px-4 py-2">Hatha Yoga</td>
+                        <td class="border px-4 py-2">Jane Doe</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Tuesday</td>
+                        <td class="border px-4 py-2">6:00 PM - 7:00 PM</td>
+                        <td class="border px-4 py-2">Vinyasa Flow</td>
+                        <td class="border px-4 py-2">John Smith</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Wednesday</td>
+                        <td class="border px-4 py-2">7:30 PM - 8:30 PM</td>
+                        <td class="border px-4 py-2">Restorative Yoga</td>
+                        <td class="border px-4 py-2">Jane Doe</td>
+                    </tr>
+                    <!-- Add more rows for other classes -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-indigo-100">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-indigo-800 text-center mb-8">Contact Us</h2>
+            <div class="max-w-md mx-auto">
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                        <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message:</label>
+                        <textarea id="message" name="message" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 py-4 text-white text-center">
+        <p>&copy; 2023 Yoga Studio. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to custom JavaScript file -->
 </body>
 </html>
