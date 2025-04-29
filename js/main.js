@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     classesData.forEach(classInfo => {
       const classElement = document.createElement('div');
-      classElement.classList.add('class-item', 'p-4', 'border', 'rounded', 'shadow-md'); // Tailwind classes
+      // Added 'w-full' for full width on all screens, 'md:w-1/2' for half width on medium screens and up, 'lg:w-1/3' for one-third width on large screens and up
+      classElement.classList.add('class-item', 'p-4', 'border', 'rounded', 'shadow-md', 'w-full', 'md:w-1/2', 'lg:w-1/3'); // Tailwind classes
 
       classElement.innerHTML = `
         <h3 class="text-xl font-semibold">${classInfo.name}</h3>
@@ -52,6 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
       classesContainer.appendChild(classElement);
     });
+    // Added flex and flex-wrap to the classes container to allow items to wrap responsively
+    classesContainer.classList.add('flex', 'flex-wrap');
   }
 
   // --- Testimonials Section ---
@@ -65,7 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     testimonialsData.forEach(testimonial => {
       const testimonialElement = document.createElement('div');
-      testimonialElement.classList.add('testimonial-item', 'p-4', 'border', 'rounded', 'shadow-md'); // Tailwind classes
+      // Added 'w-full' for full width on all screens, 'md:w-1/2' for half width on medium screens and up
+      testimonialElement.classList.add('testimonial-item', 'p-4', 'border', 'rounded', 'shadow-md', 'w-full', 'md:w-1/2'); // Tailwind classes
 
       testimonialElement.innerHTML = `
         <p class="italic">${testimonial.text}</p>
@@ -74,6 +78,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
       testimonialsContainer.appendChild(testimonialElement);
     });
+    // Added flex and flex-wrap to the testimonials container to allow items to wrap responsively
+    testimonialsContainer.classList.add('flex', 'flex-wrap');
   }
 
   // --- Contact Form ---

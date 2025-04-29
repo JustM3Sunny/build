@@ -14,12 +14,27 @@
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between">
                 <a href="../index.html" class="text-2xl font-semibold text-gray-800">Yoga Studio</a>
-                <ul class="flex space-x-6">
+                <!-- Updated navigation for responsiveness using Tailwind's responsive utilities -->
+                <ul class="flex space-x-6 hidden md:flex">
                     <li><a href="../index.html" class="hover:text-gray-500">Home</a></li>
                     <li><a href="about.html" class="text-blue-600 font-medium">About Us</a></li>
                     <li><a href="classes.html" class="hover:text-gray-500">Classes</a></li>
                     <li><a href="schedule.html" class="hover:text-gray-500">Schedule</a></li>
                     <li><a href="contact.html" class="hover:text-gray-500">Contact</a></li>
+                </ul>
+                <!-- Hamburger menu for smaller screens -->
+                <button id="menu-toggle" class="md:hidden block">
+                    <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+                </button>
+            </div>
+            <!-- Mobile menu (hidden by default) -->
+            <div id="mobile-menu" class="md:hidden hidden bg-white py-2 px-4 mt-2 shadow-md rounded">
+                <ul>
+                    <li><a href="../index.html" class="block py-1 hover:text-gray-500">Home</a></li>
+                    <li><a href="about.html" class="block py-1 text-blue-600 font-medium">About Us</a></li>
+                    <li><a href="classes.html" class="block py-1 hover:text-gray-500">Classes</a></li>
+                    <li><a href="schedule.html" class="block py-1 hover:text-gray-500">Schedule</a></li>
+                    <li><a href="contact.html" class="block py-1 hover:text-gray-500">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -67,6 +82,7 @@
     <section class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Meet Our Instructors</h2>
+            <!-- Updated instructor grid for responsiveness -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                 <!-- Instructor 1 -->
@@ -104,6 +120,15 @@
         </div>
     </footer>
 
+    <script>
+        // JavaScript to toggle the mobile menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
     <script src="../script.js"></script> <!-- Link to a custom JavaScript file for any interactive elements -->
 </body>
 </html>

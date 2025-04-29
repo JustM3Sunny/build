@@ -14,6 +14,7 @@ body {
   font-family: sans-serif;
   background-color: #f8f8f8; /* Light gray background */
   color: #333; /* Dark gray text */
+  margin: 0; /* Reset default body margin for full width */
 }
 
 /* Header Styles */
@@ -21,12 +22,28 @@ body {
   background-color: #fff; /* White header background */
   padding: 1rem 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: sticky; /* Make header stick to the top */
+  top: 0;
+  z-index: 100; /* Ensure it stays on top of other content */
+}
+
+.header-container {
+  max-width: 1200px; /* Limit width on larger screens */
+  margin: 0 auto; /* Center the header content */
+  padding: 0 1rem; /* Add some padding on the sides */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-logo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #4CAF50; /* Yoga-themed green */
+}
+
+.header-nav {
+  display: flex;
 }
 
 .header-nav a {
@@ -48,6 +65,12 @@ body {
   color: #fff;
   text-align: center;
   padding: 6rem 0;
+}
+
+.hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .hero-title {
@@ -82,10 +105,22 @@ body {
   text-align: center;
 }
 
+.classes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .classes-title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
+}
+
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
 }
 
 .class-card {
@@ -93,7 +128,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .class-card-image {
@@ -119,6 +153,12 @@ body {
   text-align: center;
 }
 
+.schedule-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .schedule-title {
   font-size: 2rem;
   font-weight: bold;
@@ -129,6 +169,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  overflow-x: auto; /* Enable horizontal scrolling on small screens */
 }
 
 .schedule-table th,
@@ -136,6 +177,7 @@ body {
   padding: 0.75rem;
   border: 1px solid #ddd;
   text-align: left;
+  white-space: nowrap; /* Prevent text wrapping in table cells */
 }
 
 .schedule-table th {
@@ -149,10 +191,22 @@ body {
   text-align: center;
 }
 
+.instructors-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .instructors-title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
+}
+
+.instructors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
 }
 
 .instructor-card {
@@ -160,7 +214,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .instructor-card-image {
@@ -187,6 +240,12 @@ body {
   color: #fff;
   padding: 4rem 0;
   text-align: center;
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .contact-title {
@@ -234,21 +293,44 @@ body {
   text-align: center;
 }
 
-/* Responsive Design (Example - Adjust as needed) */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
   }
 
+  .header-nav {
+    flex-direction: column; /* Stack navigation links on smaller screens */
+    align-items: center;
+  }
+
   .header-nav a {
-    margin-left: 0.5rem;
+    margin-left: 0;
+    margin-top: 0.5rem;
   }
 
-  .class-card {
-    margin-bottom: 1rem;
+  .classes-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
   }
 
-  .instructor-card {
-    margin-bottom: 1rem;
+  .instructors-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
   }
+}
+
+/* Add container classes to limit content width and center it */
+.hero,
+.classes,
+.schedule,
+.instructors,
+.contact,
+.footer {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
