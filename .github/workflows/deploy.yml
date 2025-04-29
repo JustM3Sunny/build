@@ -1,10 +1,9 @@
-# This workflow deploys the static site to GitHub Pages
-#
-# It triggers on pushes to the main branch.
+# This workflow deploys the website to GitHub Pages
 
 name: Deploy to GitHub Pages
 
 on:
+  # Trigger the workflow on push to the main branch
   push:
     branches: [ main ]
 
@@ -21,6 +20,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
@@ -38,10 +38,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build # Replace with your build command, e.g., 'npm run build', 'gulp build', etc.
-        env:
-          BASE_URL: ${{ github.event.repository.name }} # Set base URL for relative paths if needed
+      - name: Build website
+        run: npm run build # Assuming you have a build script in package.json
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -49,9 +47,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire build directory
-          path: './dist' # Replace with your build output directory, e.g., 'dist', 'build', etc.
+          # Upload the 'dist' folder (or whatever your build output folder is)
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4

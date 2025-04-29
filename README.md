@@ -46,7 +46,7 @@ These instructions will guide you through deploying this project to GitHub Pages
 
    **Alternative Deployment with gh-pages branch (if needed):**
 
-   If you prefer to deploy from a separate `gh-pages` branch:
+   If you prefer to deploy from a separate `gh-pages` branch (useful for projects with build steps):
 
    1.  **Install `gh-pages`:** `npm install gh-pages --save-dev` (You'll need Node.js and npm installed)
    2.  **Add a deploy script to `package.json`:**
@@ -60,6 +60,8 @@ These instructions will guide you through deploying this project to GitHub Pages
    3.  **Run the deploy script:** `npm run deploy`
 
    This will create a `gh-pages` branch with your built files and deploy it to GitHub Pages.  You'll also need to configure GitHub Pages to use the `gh-pages` branch in the "Source" section of the Pages settings.
+
+   **Troubleshooting:** If your GitHub Pages site doesn't update after pushing changes, try clearing your browser's cache or hard refreshing the page.  Sometimes the browser caches an older version of the site.
 
 ## Development
 
