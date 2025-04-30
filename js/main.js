@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // heroSection.style.backgroundImage = "url('img/yoga-background.jpg')"; // Replace with your image path
     // heroSection.style.backgroundSize = 'cover';
     // heroSection.style.backgroundPosition = 'center';
+    heroSection.classList.add('bg-cover', 'bg-center', 'h-screen', 'flex', 'items-center', 'justify-center', 'text-white'); // Added classes for responsiveness and styling
   }
 
   // --- Classes Section ---
@@ -44,15 +45,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     classesData.forEach(classInfo => {
       const classElement = document.createElement('div');
-      classElement.classList.add('class-item', 'p-4', 'border', 'rounded', 'shadow-md', 'w-full', 'md:w-1/2', 'lg:w-1/3');
+      classElement.classList.add('class-item', 'p-4', 'border', 'rounded', 'shadow-md', 'w-full', 'md:w-1/2', 'lg:w-1/3', 'mb-4'); // Added mb-4 for spacing
 
       const heading = document.createElement('h3');
-      heading.classList.add('text-xl', 'font-semibold');
+      heading.classList.add('text-xl', 'font-semibold', 'mb-2'); // Added mb-2 for spacing
       heading.textContent = classInfo.name;
       classElement.appendChild(heading);
 
       const timePara = document.createElement('p');
-      timePara.classList.add('text-gray-600');
+      timePara.classList.add('text-gray-600', 'mb-2'); // Added mb-2 for spacing
       timePara.textContent = classInfo.time;
       classElement.appendChild(timePara);
 
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
       fragment.appendChild(classElement); // Append to fragment
     });
 
-    classesContainer.classList.add('flex', 'flex-wrap', 'justify-center');
+    classesContainer.classList.add('flex', 'flex-wrap', 'justify-center', 'container', 'mx-auto', 'py-8'); // Added container, mx-auto, py-8 for responsiveness
     classesContainer.appendChild(fragment); // Append the entire fragment at once
   }
 
@@ -81,10 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     testimonialsData.forEach(testimonial => {
       const testimonialElement = document.createElement('div');
-      testimonialElement.classList.add('testimonial-item', 'p-4', 'border', 'rounded', 'shadow-md', 'w-full', 'md:w-1/2');
+      testimonialElement.classList.add('testimonial-item', 'p-4', 'border', 'rounded', 'shadow-md', 'w-full', 'md:w-1/2', 'mb-4'); // Added mb-4 for spacing
 
       const textPara = document.createElement('p');
-      textPara.classList.add('italic');
+      textPara.classList.add('italic', 'mb-2'); // Added mb-2 for spacing
       textPara.textContent = testimonial.text;
       testimonialElement.appendChild(textPara);
 
@@ -96,13 +97,14 @@ document.addEventListener('DOMContentLoaded', function() {
       fragment.appendChild(testimonialElement); // Append to fragment
     });
 
-    testimonialsContainer.classList.add('flex', 'flex-wrap', 'justify-center');
+    testimonialsContainer.classList.add('flex', 'flex-wrap', 'justify-center', 'container', 'mx-auto', 'py-8'); // Added container, mx-auto, py-8 for responsiveness
     testimonialsContainer.appendChild(fragment); // Append the entire fragment at once
   }
 
   // --- Contact Form ---
   const form = document.querySelector('form');
   if (form) {
+    form.classList.add('container', 'mx-auto', 'py-8', 'w-full', 'md:w-1/2'); // Added container, mx-auto, py-8, w-full, md:w-1/2 for responsiveness
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -148,5 +150,15 @@ document.addEventListener('DOMContentLoaded', function() {
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  }
+
+  // --- Mobile Navigation ---
+  const menuButton = document.getElementById('menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide the menu
+    });
   }
 });

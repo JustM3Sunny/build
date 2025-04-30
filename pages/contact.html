@@ -30,6 +30,65 @@
         .contact-form button:hover {
             background-color: #3e8e41;
         }
+        
+        /* New styles for full UI/UX and responsive design */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .contact-section {
+            background-color: #f7f7f7;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        .contact-form label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        .contact-form button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #3e8e41;
+        }
+        .contact-info {
+            padding: 2rem;
+        }
+        .contact-info h2 {
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .social-links a {
+            margin: 0 1rem;
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans">
@@ -48,7 +107,7 @@
     </nav>
 
     <!-- Contact Section -->
-    <section class="container mx-auto py-12 px-4">
+    <section class="contact-section container mx-auto py-12 px-4">
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Contact Us</h1>
 
         <!-- Responsive grid layout using Tailwind CSS -->
@@ -74,14 +133,14 @@
             </div>
 
             <!-- Contact Information -->
-            <div>
+            <div class="contact-info">
                 <h2 class="text-2xl font-semibold text-gray-700 mb-4">Our Information</h2>
                 <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i> 123 Yoga Lane, Anytown, USA</p>
                 <p class="text-gray-600 mb-2"><i class="fas fa-phone-alt mr-2"></i> (555) 123-4567</p>
                 <p class="text-gray-600 mb-2"><i class="fas fa-envelope mr-2"></i> info@yogaclasses.com</p>
 
                 <!-- Social Media Links -->
-                <div class="mt-6">
+                <div class="social-links">
                     <a href="#" class="text-blue-500 hover:text-blue-700 mr-4"><i class="fab fa-facebook fa-2x"></i></a>
                     <a href="#" class="text-blue-500 hover:text-blue-700 mr-4"><i class="fab fa-twitter fa-2x"></i></a>
                     <a href="#" class="text-blue-500 hover:text-blue-700 mr-4"><i class="fab fa-instagram fa-2x"></i></a>

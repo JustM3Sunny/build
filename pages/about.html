@@ -10,7 +10,7 @@
 <body class="bg-gray-100 font-sans">
 
     <!-- Navigation Bar -->
-    <nav class="bg-white shadow-md py-4">
+    <nav class="bg-white shadow-md py-4 fixed top-0 w-full z-10"> <!-- Added fixed positioning and z-index for sticky navbar -->
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between">
                 <a href="../index.html" class="text-2xl font-semibold text-gray-800">Yoga Studio</a>
@@ -41,12 +41,13 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-blue-100 py-20">
+    <section class="bg-blue-100 py-20 mt-20"> <!-- Added mt-20 to account for fixed navbar height -->
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl font-bold text-gray-800 mb-4">About Our Yoga Studio</h1>
             <p class="text-lg text-gray-700">
                 Discover the transformative power of yoga with our experienced instructors and welcoming community.
             </p>
+            <a href="../contact.html" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Contact Us</a> <!-- Added a call to action button -->
         </div>
     </section>
 
@@ -54,7 +55,7 @@
     <section class="py-16">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-                <img src="../images/yoga-instructor.jpg" alt="Yoga Instructor" class="rounded-lg shadow-md w-full h-auto">
+                <img src="../images/yoga-instructor.jpg" alt="Yoga Instructor" class="rounded-lg shadow-md w-full h-auto object-cover"> <!-- Added object-cover for better image scaling -->
             </div>
             <div>
                 <h2 class="text-3xl font-semibold text-gray-800 mb-4">Our Journey</h2>
@@ -86,29 +87,53 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                 <!-- Instructor 1 -->
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <img src="../images/instructor1.jpg" alt="Instructor 1" class="rounded-full w-32 h-32 mx-auto mb-4">
+                <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition duration-300"> <!-- Added hover effect -->
+                    <img src="../images/instructor1.jpg" alt="Instructor 1" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"> <!-- Added object-cover -->
                     <h3 class="text-xl font-semibold text-gray-800 text-center">Jane Doe</h3>
                     <p class="text-gray-600 text-center">Hatha & Vinyasa Yoga</p>
                     <p class="text-gray-700 mt-2">Jane has been practicing yoga for over 10 years and is passionate about helping students find their inner peace.</p>
                 </div>
 
                 <!-- Instructor 2 -->
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <img src="../images/instructor2.jpg" alt="Instructor 2" class="rounded-full w-32 h-32 mx-auto mb-4">
+                <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition duration-300"> <!-- Added hover effect -->
+                    <img src="../images/instructor2.jpg" alt="Instructor 2" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"> <!-- Added object-cover -->
                     <h3 class="text-xl font-semibold text-gray-800 text-center">John Smith</h3>
                     <p class="text-gray-600 text-center">Ashtanga & Yin Yoga</p>
                     <p class="text-gray-700 mt-2">John specializes in Ashtanga and Yin yoga, helping students build strength and flexibility.</p>
                 </div>
 
                 <!-- Instructor 3 -->
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <img src="../images/instructor3.jpg" alt="Instructor 3" class="rounded-full w-32 h-32 mx-auto mb-4">
+                <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition duration-300"> <!-- Added hover effect -->
+                    <img src="../images/instructor3.jpg" alt="Instructor 3" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"> <!-- Added object-cover -->
                     <h3 class="text-xl font-semibold text-gray-800 text-center">Emily Brown</h3>
                     <p class="text-gray-600 text-center">Prenatal & Restorative Yoga</p>
                     <p class="text-gray-700 mt-2">Emily is dedicated to providing safe and nurturing yoga practices for expectant mothers and those seeking relaxation.</p>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-blue-50 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">What Our Students Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-gray-700 italic mb-4">"I've been attending classes at Yoga Studio for over a year now, and it's completely transformed my life. The instructors are amazing, and the community is so supportive."</p>
+                    <p class="text-gray-600 font-semibold">- Sarah M.</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-gray-700 italic mb-4">"The prenatal yoga classes were a lifesaver during my pregnancy. Emily is so knowledgeable and caring, and I felt safe and supported throughout the entire process."</p>
+                    <p class="text-gray-600 font-semibold">- Jessica L.</p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-gray-700 italic mb-4">"I've tried other yoga studios before, but Yoga Studio is by far the best. The atmosphere is so welcoming, and I always leave feeling refreshed and rejuvenated."</p>
+                    <p class="text-gray-600 font-semibold">- David K.</p>
+                </div>
             </div>
         </div>
     </section>

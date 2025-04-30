@@ -1,0 +1,122 @@
+/*
+  responsive.css - Styles for making the UI responsive across different screen sizes.
+
+  This file contains media queries and CSS rules to adjust the layout, typography,
+  and other visual elements to provide an optimal user experience on various devices.
+*/
+
+/* Default styles (for larger screens - desktop) */
+body {
+  font-size: 16px; /* Base font size */
+  line-height: 1.5;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navigation styles (example) */
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+/* Media query for tablets (768px - 991px) */
+@media (max-width: 991px) {
+  body {
+    font-size: 15px; /* Slightly smaller font size for tablets */
+  }
+
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  /* Adjust navigation for tablets */
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav li {
+    margin: 5px 0;
+  }
+}
+
+/* Media query for mobile phones (up to 767px) */
+@media (max-width: 767px) {
+  body {
+    font-size: 14px; /* Smaller font size for mobile */
+  }
+
+  .container {
+    width: 100%; /* Full width on mobile */
+    padding: 10px;
+  }
+
+  /* Example: Stack elements vertically */
+  .row {
+    flex-direction: column; /* If using flexbox */
+  }
+
+  .col-md-6 {
+    width: 100%; /* Make columns full width on mobile */
+  }
+
+  /* Adjust navigation for mobile (hamburger menu example - basic) */
+  nav ul {
+    display: none; /* Hide the menu by default */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #f0f0f0; /* Example background color */
+    position: absolute;
+    top: 60px; /* Adjust based on header height */
+    left: 0;
+    z-index: 10; /* Ensure it's above other content */
+  }
+
+  nav li {
+    margin: 10px 0;
+  }
+
+  /* Show the menu when a class (e.g., 'active') is added (JavaScript required) */
+  nav ul.active {
+    display: flex;
+  }
+
+  /* Hamburger icon (basic example - needs styling) */
+  .hamburger-icon {
+    display: block; /* Show the hamburger icon */
+    cursor: pointer;
+    /* Add styling for the hamburger icon here */
+  }
+}
+
+/* Example: Adjustments for specific elements */
+.hero-section {
+  padding: 50px 0;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .hero-section {
+    padding: 30px 0;
+  }
+
+  .hero-section h1 {
+    font-size: 2em; /* Smaller heading on mobile */
+  }
+}
+
+/* Add more media queries and styles as needed for other elements */
+/* Consider using a mobile-first approach for more complex layouts */
