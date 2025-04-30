@@ -39,11 +39,11 @@ function toggleMobileMenu() {
     return;
   }
 
-  const isHidden = mobileMenu.classList.contains('hidden');
   mobileMenu.classList.toggle('hidden');
 
   if (menuButton) {
-    menuButton.textContent = isHidden ? 'Close' : 'Menu'; // Or use an icon
+    const isHidden = mobileMenu.classList.contains('hidden'); //Check after toggle
+    menuButton.textContent = isHidden ? 'Menu' : 'Close'; // Or use an icon, corrected logic
   }
 }
 
@@ -103,7 +103,7 @@ async function handleContactFormSubmit(event) {
 
   if (validateContactForm()) {
     try {
-      const form = document.getElementById('contact-form');
+      const form = event.target; // Use event.target instead of getElementById
       if (!form) {
         console.error('Contact form not found.');
         alert('An error occurred. Please try again later.');
