@@ -30,6 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         # Update the repository name to yoga_website
+        # This ensures we are checking out the correct repository
         with:
           repository: yoga_website
 
@@ -51,6 +52,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload the 'dist' folder (or whatever your build output folder is)
+          # This assumes your build process outputs to a 'dist' folder.
+          # Adjust the path if your build output is in a different directory.
           path: './dist'
 
       - name: Deploy to GitHub Pages
