@@ -95,7 +95,7 @@ function validateContactForm() {
 }
 
 /**
- * Function to handle form submission (simulated).
+ * Function to handle form submission.
  * @param {Event} event - The form submission event.
  */
 async function handleContactFormSubmit(event) {
@@ -103,26 +103,33 @@ async function handleContactFormSubmit(event) {
 
   if (validateContactForm()) {
     try {
-      // Simulate form submission (replace with actual AJAX call)
-      // Using fetch API for a more modern approach
-      const formData = new FormData(document.getElementById('contact-form'));
+      const form = document.getElementById('contact-form');
+      if (!form) {
+        console.error('Contact form not found.');
+        alert('An error occurred. Please try again later.');
+        return;
+      }
+
+      const formData = new FormData(form);
       const response = await fetch('/api/contact', { // Replace with your API endpoint
         method: 'POST',
         body: formData,
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json();
+        const errorMessage = errorData.message || `HTTP error! status: ${response.status}`;
+        throw new Error(errorMessage);
       }
 
       const result = await response.json(); // Assuming the API returns JSON
 
       alert('Form submitted successfully!');
-      document.getElementById('contact-form').reset();
+      form.reset();
 
     } catch (error) {
       console.error('Form submission failed:', error);
-      alert('Form submission failed. Please try again later.');
+      alert(`Form submission failed: ${error.message}. Please try again later.`);
     }
   }
 }
