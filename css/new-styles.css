@@ -1,0 +1,272 @@
+/*
+  Theme: New Styles for Enhanced UI/UX and Responsiveness
+
+  This stylesheet provides a comprehensive update to the website's appearance,
+  focusing on improved user experience, a modern GUI, and full responsiveness
+  across various devices.  It also lays the groundwork for styling new sections
+  and pages.
+*/
+
+/* -------------------------------------------------------------------------- */
+/*  General Styles & Reset (Modified Normalize)                               */
+/* -------------------------------------------------------------------------- */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding and margin */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal; /* Ensure consistent font weight */
+}
+
+/* Set default font and background */
+body {
+  font-family: sans-serif; /* Replace with your preferred font */
+  line-height: 1.6;
+  background-color: #f8f8f8; /* Light background */
+  color: #333; /* Dark text for readability */
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Typography                                                                */
+/* -------------------------------------------------------------------------- */
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.6rem;
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #007bff; /* Standard link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Layout & Structure                                                        */
+/* -------------------------------------------------------------------------- */
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+header {
+  background-color: #fff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky; /* Stick the header to the top */
+  top: 0;
+  z-index: 100; /* Ensure it's above other elements */
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav li {
+  margin: 0 1rem;
+}
+
+nav a {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #f0f0f0;
+  text-decoration: none;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Forms                                                                     */
+/* -------------------------------------------------------------------------- */
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  New Section Styles (Example)                                              */
+/* -------------------------------------------------------------------------- */
+
+.new-section {
+  background-color: #e9ecef;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.new-section h2 {
+  color: #212529;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Responsiveness                                                            */
+/* -------------------------------------------------------------------------- */
+
+/* Small screens (phones) */
+@media (max-width: 576px) {
+  .container {
+    width: 95%;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav li {
+    margin: 0.5rem 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 577px) and (max-width: 992px) {
+  .container {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+}
+
+/* Large screens (desktops) - default styles above apply */
+
+/* Extra large screens (large desktops) */
+@media (min-width: 1200px) {
+  .container {
+    width: 80%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Utility Classes (Example)                                                 */
+/* -------------------------------------------------------------------------- */
+
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}

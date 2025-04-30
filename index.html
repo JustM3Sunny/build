@@ -19,6 +19,8 @@
                     <li><a href="#classes" class="hover:text-indigo-500">Classes</a></li>
                     <li><a href="#about" class="hover:text-indigo-500">About Us</a></li>
                     <li><a href="#schedule" class="hover:text-indigo-500">Schedule</a></li>
+                    <li><a href="#testimonials" class="hover:text-indigo-500">Testimonials</a></li> <!-- Added Testimonials link -->
+                    <li><a href="#blog" class="hover:text-indigo-500">Blog</a></li> <!-- Added Blog link -->
                     <li><a href="#contact" class="hover:text-indigo-500">Contact</a></li>
                 </ul>
             </nav>
@@ -123,9 +125,70 @@
                             <td class="border px-4 py-2">Restorative Yoga</td>
                             <td class="border px-4 py-2">Jane Doe</td>
                         </tr>
+                        <tr> <!-- Added a new row -->
+                            <td class="border px-4 py-2">Thursday</td>
+                            <td class="border px-4 py-2">10:00 AM - 11:00 AM</td>
+                            <td class="border px-4 py-2">Yin Yoga</td>
+                            <td class="border px-4 py-2">Emily White</td>
+                        </tr>
                         <!-- Add more rows for other classes -->
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-indigo-800 text-center mb-8">What Our Students Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <p class="text-gray-700 italic mb-4">"I've been attending classes at Yoga Studio for over a year, and it's completely transformed my life. The instructors are amazing, and the community is so supportive."</p>
+                    <p class="text-indigo-600 font-semibold">- Sarah Johnson</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <p class="text-gray-700 italic mb-4">"The restorative yoga class is my favorite! It's the perfect way to unwind and de-stress after a long day. I always leave feeling refreshed and rejuvenated."</p>
+                    <p class="text-indigo-600 font-semibold">- Michael Davis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-16">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-indigo-800 text-center mb-8">Latest Blog Posts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="images/blog-post-1.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2">The Benefits of Daily Yoga</h3>
+                        <p class="text-gray-600">Discover the many ways that incorporating yoga into your daily routine can improve your physical and mental well-being.</p>
+                        <a href="#" class="mt-4 block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">Read More</a>
+                    </div>
+                </div>
+                <!-- Blog Post 2 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="images/blog-post-2.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2">Yoga for Stress Relief</h3>
+                        <p class="text-gray-600">Learn how yoga can help you manage stress and anxiety through mindful movement and breathwork.</p>
+                        <a href="#" class="mt-4 block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">Read More</a>
+                    </div>
+                </div>
+                <!-- Blog Post 3 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="images/blog-post-3.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2">Beginner's Guide to Yoga</h3>
+                        <p class="text-gray-600">A comprehensive guide for beginners who are new to yoga and want to learn the basics.</p>
+                        <a href="#" class="mt-4 block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">Read More</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -144,6 +207,10 @@
                     <div class="mb-4">
                         <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
                         <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                     <div class="mb-4">
+                        <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Phone:</label>
+                        <input type="tel" id="phone" name="phone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
                     <div class="mb-6">
                         <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message:</label>

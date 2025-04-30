@@ -93,7 +93,7 @@
 </head>
 <body class="bg-gray-100 font-sans">
 
-    <!-- Navigation Bar (Consider moving to a separate component) -->
+    <!-- Navigation Bar -->
     <nav class="bg-white shadow-md py-4">
         <div class="container mx-auto px-4 flex items-center justify-between">
             <a href="/" class="text-2xl font-bold text-gray-800">Yoga Classes</a>
@@ -102,9 +102,18 @@
                 <li><a href="/classes.html" class="text-gray-600 hover:text-gray-800">Classes</a></li>
                 <li><a href="/about.html" class="text-gray-600 hover:text-gray-800">About</a></li>
                 <li><a href="/contact.html" class="text-gray-600 hover:text-gray-800">Contact</a></li>
+                <li><a href="/blog.html" class="text-gray-600 hover:text-gray-800">Blog</a></li> <!-- Added Blog link -->
             </ul>
         </div>
     </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-cover bg-center py-20" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb60a9e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80')">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-white mb-4">Get in Touch</h2>
+            <p class="text-lg text-white">We'd love to hear from you. Contact us for any inquiries or feedback.</p>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section class="contact-section container mx-auto py-12 px-4">
@@ -121,6 +130,9 @@
 
                     <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
                     <input type="email" id="email" name="email" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+
+                    <label for="subject" class="block text-gray-700 text-sm font-bold mb-2">Subject:</label>
+                    <input type="text" id="subject" name="subject" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
 
                     <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message:</label>
                     <textarea id="message" name="message" rows="4" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
@@ -149,9 +161,44 @@
         </div>
     </section>
 
-    <!-- Footer (Consider moving to a separate component) -->
+    <!-- Additional Section: Testimonials -->
+    <section class="bg-gray-100 py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">What Our Students Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-gray-700">"I've been attending yoga classes here for a year, and it's completely transformed my well-being. The instructors are amazing!"</p>
+                    <p class="text-gray-500 mt-4">- Jane Doe</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-gray-700">"The classes are challenging but also very relaxing. I always leave feeling refreshed and energized."</p>
+                    <p class="text-gray-500 mt-4">- John Smith</p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-gray-700">"The community here is so supportive. I've made great friends and improved my flexibility and strength."</p>
+                    <p class="text-gray-500 mt-4">- Emily Brown</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="bg-gray-200 py-4 text-center">
-        <p class="text-gray-600">© 2023 Yoga Classes. All rights reserved.</p>
+        <div class="container mx-auto">
+            <div class="social-links mb-2">
+                <a href="#" class="text-gray-600 hover:text-gray-800 mr-4"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 mr-4"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 mr-4"><i class="fab fa-instagram fa-lg"></i></a>
+            </div>
+            <p class="text-gray-600">© 2023 Yoga Classes. All rights reserved.</p>
+            <p class="text-gray-600">
+                <a href="/privacy.html" class="text-gray-600 hover:text-gray-800">Privacy Policy</a> |
+                <a href="/terms.html" class="text-gray-600 hover:text-gray-800">Terms of Service</a>
+            </p>
+        </div>
     </footer>
 
     <script>

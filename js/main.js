@@ -21,13 +21,21 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // --- Hero Section ---
-  // (Example: Add a dynamic background image - replace with actual logic)
+  // Add a dynamic background image and styling for responsiveness
   const heroSection = document.getElementById('hero');
   if (heroSection) {
-    // heroSection.style.backgroundImage = "url('img/yoga-background.jpg')"; // Replace with your image path
-    // heroSection.style.backgroundSize = 'cover';
-    // heroSection.style.backgroundPosition = 'center';
-    heroSection.classList.add('bg-cover', 'bg-center', 'h-screen', 'flex', 'items-center', 'justify-center', 'text-white'); // Added classes for responsiveness and styling
+    heroSection.classList.add('bg-cover', 'bg-center', 'h-screen', 'flex', 'items-center', 'justify-center', 'text-white', 'relative'); // Added relative for absolute positioning of overlay
+
+    // Add an overlay for better text readability
+    const overlay = document.createElement('div');
+    overlay.classList.add('absolute', 'top-0', 'left-0', 'w-full', 'h-full', 'bg-black', 'opacity-50');
+    heroSection.appendChild(overlay);
+
+    // Style the hero content to be above the overlay
+    const heroContent = heroSection.querySelector('.hero-content'); // Assuming a div with class hero-content exists
+    if (heroContent) {
+      heroContent.classList.add('relative', 'z-10', 'text-center'); // Ensure content is above overlay and centered
+    }
   }
 
   // --- Classes Section ---
@@ -36,7 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const classesData = [
       { name: 'Hatha Yoga', time: '9:00 AM', description: 'Gentle introduction to yoga.' },
       { name: 'Vinyasa Flow', time: '10:30 AM', description: 'Dynamic and flowing practice.' },
-      { name: 'Restorative Yoga', time: '6:00 PM', description: 'Relaxing and rejuvenating session.' }
+      { name: 'Restorative Yoga', time: '6:00 PM', description: 'Relaxing and rejuvenating session.' },
+      { name: 'Ashtanga Yoga', time: '7:30 AM', description: 'A rigorous and dynamic style of yoga.' }, // Added a new class
+      { name: 'Yin Yoga', time: '7:00 PM', description: 'A slow-paced style of yoga with long-held poses.' } // Added another new class
     ];
 
     classesContainer.innerHTML = ''; // Clear existing content
@@ -73,7 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (testimonialsContainer) {
     const testimonialsData = [
       { author: 'Jane Doe', text: 'Great yoga classes! I feel so much better.' },
-      { author: 'John Smith', text: 'The instructors are amazing and very helpful.' }
+      { author: 'John Smith', text: 'The instructors are amazing and very helpful.' },
+      { author: 'Alice Brown', text: 'I highly recommend this yoga studio to everyone!' } // Added a new testimonial
     ];
 
     testimonialsContainer.innerHTML = ''; // Clear existing content
@@ -161,4 +172,66 @@ document.addEventListener('DOMContentLoaded', function() {
       mobileMenu.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide the menu
     });
   }
+
+  // --- About Us Section ---
+  // Example of adding a new section dynamically
+  const aboutUsSection = document.createElement('section');
+  aboutUsSection.id = 'about-us';
+  aboutUsSection.classList.add('container', 'mx-auto', 'py-16', 'text-center');
+
+  const aboutUsHeading = document.createElement('h2');
+  aboutUsHeading.classList.add('text-3xl', 'font-bold', 'mb-4');
+  aboutUsHeading.textContent = 'About Us';
+  aboutUsSection.appendChild(aboutUsHeading);
+
+  const aboutUsParagraph = document.createElement('p');
+  aboutUsParagraph.classList.add('text-gray-700', 'leading-relaxed');
+  aboutUsParagraph.textContent = 'We are a team of passionate yoga instructors dedicated to helping you achieve your wellness goals.  Our classes are designed for all levels, from beginners to experienced practitioners.  We believe in creating a supportive and inclusive environment where everyone feels welcome.';
+  aboutUsSection.appendChild(aboutUsParagraph);
+
+  // Insert the About Us section before the Contact Form
+  const contactForm = document.querySelector('form');
+  if (contactForm) {
+    contactForm.parentNode.insertBefore(aboutUsSection, contactForm);
+  } else {
+    // If contact form doesn't exist, append to the body (less ideal, but prevents errors)
+    document.body.appendChild(aboutUsSection);
+  }
+
+  // --- Schedule Page (Simulated) ---
+  // This would ideally be on a separate page, but we can simulate it by adding a button that shows/hides a schedule section
+  const scheduleButton = document.createElement('button');
+  scheduleButton.textContent = 'View Class Schedule';
+  scheduleButton.classList.add('bg-blue-500', 'hover:bg-blue-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'mx-auto', 'block', 'mb-8'); // Added styling
+
+  const scheduleSection = document.createElement('div');
+  scheduleSection.id = 'schedule';
+  scheduleSection.classList.add('container', 'mx-auto', 'py-8', 'hidden'); // Initially hidden
+
+  const scheduleHeading = document.createElement('h2');
+  scheduleHeading.textContent = 'Class Schedule';
+  scheduleHeading.classList.add('text-2xl', 'font-semibold', 'mb-4');
+  scheduleSection.appendChild(scheduleHeading);
+
+  const scheduleTable = document.createElement('table');
+  scheduleTable.classList.add('table-auto', 'w-full'); // Tailwind table classes
+
+  const tableHead = document.createElement('thead');
+  tableHead.innerHTML = '<tr><th class="px-4 py-2">Day</th><th class="px-4 py-2">Time</th><th class="px-4 py-2">Class</th></tr>'; // Basic table header
+  scheduleTable.appendChild(tableHead);
+
+  const tableBody = document.createElement('tbody');
+  tableBody.innerHTML = '<tr><td class="border px-4 py-2">Monday</td><td class="border px-4 py-2">9:00 AM</td><td class="border px-4 py-2">Hatha Yoga</td></tr><tr><td class="border px-4 py-2">Tuesday</td><td class="border px-4 py-2">10:30 AM</td><td class="border px-4 py-2">Vinyasa Flow</td></tr>'; // Example table data
+  scheduleTable.appendChild(tableBody);
+
+  scheduleSection.appendChild(scheduleTable);
+
+  // Append the button and schedule section to the body
+  document.body.appendChild(scheduleButton);
+  document.body.appendChild(scheduleSection);
+
+  // Add event listener to the button to toggle the schedule section
+  scheduleButton.addEventListener('click', () => {
+    scheduleSection.classList.toggle('hidden');
+  });
 });

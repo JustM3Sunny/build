@@ -1,19 +1,21 @@
-# Yoga Website
+# Yoga Website - Revamped!
 
-A modern and fully-featured website for yoga classes, built with Tailwind CSS, HTML, and JavaScript.
+A modern, fully-featured, and highly responsive website for yoga classes. This version includes significant UI/UX improvements, more sections, and additional pages for an enhanced user experience.
 
 ## Features
 
-- **Responsive Design:** Fully responsive layout using Tailwind CSS, ensuring optimal viewing experience on all devices.
-- **Clean and Modern UI:** A visually appealing and user-friendly interface.
-- **Class Schedule:** Displays a detailed schedule of yoga classes, including timings, instructors, and descriptions.
-- **Instructor Profiles:** Introduces the yoga instructors with their expertise and experience.
-- **Pricing Plans:** Presents various membership and class package options.
-- **Contact Form:** Allows users to easily contact the studio for inquiries.
-- **Smooth Scrolling Navigation:** Enhances user experience with smooth transitions between sections.
-- **Image Gallery:** Showcases the studio environment and yoga poses.
-- **Testimonials:** Displays positive feedback from satisfied students.
-- **Blog (Optional):** A section for sharing yoga-related articles and tips (can be added later).
+- **Fully Responsive Design:** Optimized for all devices using Tailwind CSS, ensuring a seamless experience on desktops, tablets, and mobile phones.
+- **Enhanced UI/UX:** A redesigned and more intuitive user interface with improved navigation and visual appeal.
+- **Comprehensive Class Schedule:** A detailed schedule of yoga classes with timings, instructors, descriptions, and booking options.
+- **Detailed Instructor Profiles:** In-depth profiles of yoga instructors, highlighting their expertise, experience, certifications, and teaching styles.
+- **Flexible Pricing Plans:** A clear presentation of various membership options, class packages, and drop-in rates, with secure online payment integration (future enhancement).
+- **Easy-to-Use Contact Form:** A user-friendly contact form for inquiries, feedback, and support.
+- **Smooth Scrolling Navigation:** Seamless transitions between sections for a fluid browsing experience.
+- **Engaging Image and Video Gallery:** A visually rich gallery showcasing the studio environment, yoga poses, and student testimonials.
+- **Student Testimonials:** Authentic testimonials from satisfied students, building trust and credibility.
+- **Informative Blog:** A dedicated blog section with articles, tips, and resources related to yoga, wellness, and healthy living.
+- **About Us Page:** A dedicated page to tell the story of the yoga studio, its mission, and its values.
+- **Events Calendar:** A calendar displaying upcoming workshops, retreats, and special events.
 
 ## Getting Started
 
@@ -79,3 +81,5 @@ To customize the Tailwind styles, you can:
 2.  Install Tailwind via npm and create a custom build.  This is recommended for more advanced customization.  See the Tailwind CSS documentation for details.
 
 ## File Structure
+
+The project now includes the following structure to accommodate the new sections and pages:
