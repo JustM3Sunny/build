@@ -1,61 +1,47 @@
-# This workflow deploys the website to GitHub Pages
-
 name: Deploy to GitHub Pages
 
 on:
-  # Trigger the workflow on push to the main branch
   push:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+    branches:
+      - main
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        # Update the repository name to yoga_website
-        # This ensures we are checking out the correct repository
-        with:
-          repository: yoga_website
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20' # Use a recent LTS version
-
+      # Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
 
-      - name: Build website
-        run: npm run build # Assuming you have a build script in package.json
+      # Build and deploy to GitHub Pages
+      - name: Build and deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY_URL: ${{ github.repository_url }}
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@${REPOSITORY_URL}.git
+          git push --force origin main:gh-pages
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # Update GitHub Pages URL in repository settings
+      - name: Update GitHub Pages URL
+        uses: actions/github-script@v6
         with:
-          # Upload the 'dist' folder (or whatever your build output folder is)
-          # This assumes your build process outputs to a 'dist' folder.
-          # Adjust the path if your build output is in a different directory.
-          path: './dist'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.repos.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pages: {
+                cname: '',
+                source: {
+                  branch: 'gh-pages',
+                  path: '/'
+                }
+              }
+            })

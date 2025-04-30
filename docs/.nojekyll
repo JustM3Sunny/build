@@ -1,0 +1,11 @@
+# This file is intentionally left blank.
+#
+# Its presence disables Jekyll processing on GitHub Pages.
+# This is useful for deploying static sites that don't require Jekyll.
+#
+# Without this file, GitHub Pages will attempt to build the site using Jekyll,
+# which can lead to unexpected behavior or build failures if the site
+# doesn't conform to Jekyll's requirements.
+#
+# For HTML-based repositories, disabling Jekyll is often the simplest
+# and most reliable way to deploy static content.
