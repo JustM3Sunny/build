@@ -9,15 +9,21 @@
  * @param {string} targetId - The ID of the element to scroll to.
  */
 function scrollToElement(targetId) {
+  if (!targetId) {
+    console.warn('scrollToElement: targetId is required.');
+    return;
+  }
+
   const targetElement = document.getElementById(targetId);
 
-  if (targetElement) {
-    targetElement.scrollIntoView({
-      behavior: 'smooth'
-    });
-  } else {
-    console.warn(`Element with ID "${targetId}" not found.`);
+  if (!targetElement) {
+    console.warn(`scrollToElement: Element with ID "${targetId}" not found.`);
+    return;
   }
+
+  targetElement.scrollIntoView({
+    behavior: 'smooth'
+  });
 }
 
 /**
@@ -28,18 +34,16 @@ function toggleMobileMenu() {
   const mobileMenu = document.getElementById('mobile-menu');
   const menuButton = document.getElementById('menu-button'); // Assuming a button with this ID
 
-  if (mobileMenu) {
-    mobileMenu.classList.toggle('hidden'); // Tailwind class to hide/show
-    // Optionally, update the button's text or icon
-    if (menuButton) {
-      if (mobileMenu.classList.contains('hidden')) {
-        menuButton.textContent = 'Menu'; // Or use an icon
-      } else {
-        menuButton.textContent = 'Close'; // Or use an icon
-      }
-    }
-  } else {
-    console.warn('Mobile menu element with ID "mobile-menu" not found.');
+  if (!mobileMenu) {
+    console.warn('toggleMobileMenu: Mobile menu element with ID "mobile-menu" not found.');
+    return;
+  }
+
+  const isHidden = mobileMenu.classList.contains('hidden');
+  mobileMenu.classList.toggle('hidden');
+
+  if (menuButton) {
+    menuButton.textContent = isHidden ? 'Close' : 'Menu'; // Or use an icon
   }
 }
 
@@ -52,26 +56,36 @@ function validateContactForm() {
   const emailInput = document.getElementById('contact-email');
   const messageInput = document.getElementById('contact-message');
 
-  if (!nameInput.value.trim()) {
+  if (!nameInput || !emailInput || !messageInput) {
+    console.error('validateContactForm: One or more form elements are missing.');
+    return false; // Or throw an error, depending on the desired behavior
+  }
+
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const message = messageInput.value.trim();
+
+  if (!name) {
     alert('Please enter your name.');
     nameInput.focus();
     return false;
   }
 
-  if (!emailInput.value.trim()) {
+  if (!email) {
     alert('Please enter your email.');
     emailInput.focus();
     return false;
   }
 
-  // Basic email validation (can be improved with regex)
-  if (!emailInput.value.includes('@')) {
+  // Improved email validation using a regular expression
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
     alert('Please enter a valid email address.');
     emailInput.focus();
     return false;
   }
 
-  if (!messageInput.value.trim()) {
+  if (!message) {
     alert('Please enter your message.');
     messageInput.focus();
     return false;
@@ -84,15 +98,32 @@ function validateContactForm() {
  * Function to handle form submission (simulated).
  * @param {Event} event - The form submission event.
  */
-function handleContactFormSubmit(event) {
+async function handleContactFormSubmit(event) {
   event.preventDefault(); // Prevent default form submission
 
   if (validateContactForm()) {
-    // Simulate form submission (replace with actual AJAX call)
-    alert('Form submitted successfully! (Simulated)');
+    try {
+      // Simulate form submission (replace with actual AJAX call)
+      // Using fetch API for a more modern approach
+      const formData = new FormData(document.getElementById('contact-form'));
+      const response = await fetch('/api/contact', { // Replace with your API endpoint
+        method: 'POST',
+        body: formData,
+      });
 
-    // Reset the form (optional)
-    document.getElementById('contact-form').reset();
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json(); // Assuming the API returns JSON
+
+      alert('Form submitted successfully!');
+      document.getElementById('contact-form').reset();
+
+    } catch (error) {
+      console.error('Form submission failed:', error);
+      alert('Form submission failed. Please try again later.');
+    }
   }
 }
 
