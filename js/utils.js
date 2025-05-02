@@ -44,6 +44,7 @@ function toggleMobileMenu() {
   if (menuButton) {
     const isHidden = mobileMenu.classList.contains('hidden'); //Check after toggle
     menuButton.textContent = isHidden ? 'Menu' : 'Close'; // Or use an icon, corrected logic
+    menuButton.ariaExpanded = !isHidden; // Update aria-expanded attribute for accessibility
   }
 }
 

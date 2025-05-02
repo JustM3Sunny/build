@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Yoga Classes Website application loaded');
 
+  // --- Configuration ---
+  const config = {
+    smoothScrollDuration: 500, // milliseconds
+    formSubmissionDelay: 500, // milliseconds
+  };
+
   // --- Navigation ---
   // Smooth scrolling for navigation links
   const anchors = document.querySelectorAll('a[href^="#"]');
@@ -12,29 +18,47 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetElement = document.querySelector(targetId);
 
       if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop,
-          behavior: 'smooth'
-        });
+        scrollToTarget(targetElement, config.smoothScrollDuration);
       }
     });
   });
 
+  function scrollToTarget(targetElement, duration) {
+    const targetPosition = targetElement.offsetTop;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+  }
+
   // --- Hero Section ---
-  // Add a dynamic background image and styling for responsiveness
   const heroSection = document.getElementById('hero');
   if (heroSection) {
-    heroSection.classList.add('bg-cover', 'bg-center', 'h-screen', 'flex', 'items-center', 'justify-center', 'text-white', 'relative'); // Added relative for absolute positioning of overlay
+    heroSection.classList.add('bg-cover', 'bg-center', 'h-screen', 'flex', 'items-center', 'justify-center', 'text-white', 'relative');
 
-    // Add an overlay for better text readability
     const overlay = document.createElement('div');
     overlay.classList.add('absolute', 'top-0', 'left-0', 'w-full', 'h-full', 'bg-black', 'opacity-50');
     heroSection.appendChild(overlay);
 
-    // Style the hero content to be above the overlay
-    const heroContent = heroSection.querySelector('.hero-content'); // Assuming a div with class hero-content exists
+    const heroContent = heroSection.querySelector('.hero-content');
     if (heroContent) {
-      heroContent.classList.add('relative', 'z-10', 'text-center'); // Ensure content is above overlay and centered
+      heroContent.classList.add('relative', 'z-10', 'text-center');
     }
   }
 
@@ -45,37 +69,11 @@ document.addEventListener('DOMContentLoaded', function() {
       { name: 'Hatha Yoga', time: '9:00 AM', description: 'Gentle introduction to yoga.' },
       { name: 'Vinyasa Flow', time: '10:30 AM', description: 'Dynamic and flowing practice.' },
       { name: 'Restorative Yoga', time: '6:00 PM', description: 'Relaxing and rejuvenating session.' },
-      { name: 'Ashtanga Yoga', time: '7:30 AM', description: 'A rigorous and dynamic style of yoga.' }, // Added a new class
-      { name: 'Yin Yoga', time: '7:00 PM', description: 'A slow-paced style of yoga with long-held poses.' } // Added another new class
+      { name: 'Ashtanga Yoga', time: '7:30 AM', description: 'A rigorous and dynamic style of yoga.' },
+      { name: 'Yin Yoga', time: '7:00 PM', description: 'A slow-paced style of yoga with long-held poses.' }
     ];
 
-    classesContainer.innerHTML = ''; // Clear existing content
-
-    const fragment = document.createDocumentFragment(); // Use a document fragment for performance
-
-    classesData.forEach(classInfo => {
-      const classElement = document.createElement('div');
-      classElement.classList.add('class-item', 'p-4', 'border', 'rounded', 'shadow-md', 'w-full', 'md:w-1/2', 'lg:w-1/3', 'mb-4'); // Added mb-4 for spacing
-
-      const heading = document.createElement('h3');
-      heading.classList.add('text-xl', 'font-semibold', 'mb-2'); // Added mb-2 for spacing
-      heading.textContent = classInfo.name;
-      classElement.appendChild(heading);
-
-      const timePara = document.createElement('p');
-      timePara.classList.add('text-gray-600', 'mb-2'); // Added mb-2 for spacing
-      timePara.textContent = classInfo.time;
-      classElement.appendChild(timePara);
-
-      const descriptionPara = document.createElement('p');
-      descriptionPara.textContent = classInfo.description;
-      classElement.appendChild(descriptionPara);
-
-      fragment.appendChild(classElement); // Append to fragment
-    });
-
-    classesContainer.classList.add('flex', 'flex-wrap', 'justify-center', 'container', 'mx-auto', 'py-8'); // Added container, mx-auto, py-8 for responsiveness
-    classesContainer.appendChild(fragment); // Append the entire fragment at once
+    renderSection(classesContainer, classesData, createClassElement, 'class-item');
   }
 
   // --- Testimonials Section ---
@@ -84,67 +82,90 @@ document.addEventListener('DOMContentLoaded', function() {
     const testimonialsData = [
       { author: 'Jane Doe', text: 'Great yoga classes! I feel so much better.' },
       { author: 'John Smith', text: 'The instructors are amazing and very helpful.' },
-      { author: 'Alice Brown', text: 'I highly recommend this yoga studio to everyone!' } // Added a new testimonial
+      { author: 'Alice Brown', text: 'I highly recommend this yoga studio to everyone!' }
     ];
 
-    testimonialsContainer.innerHTML = ''; // Clear existing content
+    renderSection(testimonialsContainer, testimonialsData, createTestimonialElement, 'testimonial-item');
+  }
 
-    const fragment = document.createDocumentFragment(); // Use a document fragment for performance
+  function renderSection(container, data, createElement, itemClassName) {
+    container.innerHTML = '';
+    const fragment = document.createDocumentFragment();
 
-    testimonialsData.forEach(testimonial => {
-      const testimonialElement = document.createElement('div');
-      testimonialElement.classList.add('testimonial-item', 'p-4', 'border', 'rounded', 'shadow-md', 'w-full', 'md:w-1/2', 'mb-4'); // Added mb-4 for spacing
-
-      const textPara = document.createElement('p');
-      textPara.classList.add('italic', 'mb-2'); // Added mb-2 for spacing
-      textPara.textContent = testimonial.text;
-      testimonialElement.appendChild(textPara);
-
-      const authorPara = document.createElement('p');
-      authorPara.classList.add('font-semibold');
-      authorPara.textContent = `- ${testimonial.author}`;
-      testimonialElement.appendChild(authorPara);
-
-      fragment.appendChild(testimonialElement); // Append to fragment
+    data.forEach(itemData => {
+      const element = createElement(itemData, itemClassName);
+      fragment.appendChild(element);
     });
 
-    testimonialsContainer.classList.add('flex', 'flex-wrap', 'justify-center', 'container', 'mx-auto', 'py-8'); // Added container, mx-auto, py-8 for responsiveness
-    testimonialsContainer.appendChild(fragment); // Append the entire fragment at once
+    container.classList.add('flex', 'flex-wrap', 'justify-center', 'container', 'mx-auto', 'py-8');
+    container.appendChild(fragment);
+  }
+
+  function createClassElement(classInfo) {
+    const classElement = document.createElement('div');
+    classElement.classList.add('class-item', 'p-4', 'border', 'rounded', 'shadow-md', 'w-full', 'md:w-1/2', 'lg:w-1/3', 'mb-4');
+
+    const heading = document.createElement('h3');
+    heading.classList.add('text-xl', 'font-semibold', 'mb-2');
+    heading.textContent = classInfo.name;
+    classElement.appendChild(heading);
+
+    const timePara = document.createElement('p');
+    timePara.classList.add('text-gray-600', 'mb-2');
+    timePara.textContent = classInfo.time;
+    classElement.appendChild(timePara);
+
+    const descriptionPara = document.createElement('p');
+    descriptionPara.textContent = classInfo.description;
+    classElement.appendChild(descriptionPara);
+
+    return classElement;
+  }
+
+  function createTestimonialElement(testimonial) {
+    const testimonialElement = document.createElement('div');
+    testimonialElement.classList.add('testimonial-item', 'p-4', 'border', 'rounded', 'shadow-md', 'w-full', 'md:w-1/2', 'mb-4');
+
+    const textPara = document.createElement('p');
+    textPara.classList.add('italic', 'mb-2');
+    textPara.textContent = testimonial.text;
+    testimonialElement.appendChild(textPara);
+
+    const authorPara = document.createElement('p');
+    authorPara.classList.add('font-semibold');
+    authorPara.textContent = `- ${testimonial.author}`;
+    testimonialElement.appendChild(authorPara);
+
+    return testimonialElement;
   }
 
   // --- Contact Form ---
   const form = document.querySelector('form');
   if (form) {
-    form.classList.add('container', 'mx-auto', 'py-8', 'w-full', 'md:w-1/2'); // Added container, mx-auto, py-8, w-full, md:w-1/2 for responsiveness
+    form.classList.add('container', 'mx-auto', 'py-8', 'w-full', 'md:w-1/2');
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
 
       if (!name || !email || !message) {
         alert('Please fill in all fields.');
         return;
       }
 
-      // Basic email validation
       if (!isValidEmail(email)) {
         alert('Please enter a valid email address.');
         return;
       }
 
-
       console.log('Form submitted:', { name, email, message });
 
-      // In a real app, you would send this data to a server using fetch or XMLHttpRequest
-      // For this example, we'll just show a success message.
-
-      // Simulate sending data to the server (replace with actual API call)
       setTimeout(() => {
         alert('Thank you for your message! We will get back to you soon.');
         form.reset();
-      }, 500);
+      }, config.formSubmissionDelay);
     });
   }
 
@@ -169,12 +190,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (menuButton && mobileMenu) {
     menuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide the menu
+      mobileMenu.classList.toggle('hidden');
     });
   }
 
   // --- About Us Section ---
-  // Example of adding a new section dynamically
   const aboutUsSection = document.createElement('section');
   aboutUsSection.id = 'about-us';
   aboutUsSection.classList.add('container', 'mx-auto', 'py-16', 'text-center');
@@ -189,24 +209,21 @@ document.addEventListener('DOMContentLoaded', function() {
   aboutUsParagraph.textContent = 'We are a team of passionate yoga instructors dedicated to helping you achieve your wellness goals.  Our classes are designed for all levels, from beginners to experienced practitioners.  We believe in creating a supportive and inclusive environment where everyone feels welcome.';
   aboutUsSection.appendChild(aboutUsParagraph);
 
-  // Insert the About Us section before the Contact Form
   const contactForm = document.querySelector('form');
   if (contactForm) {
     contactForm.parentNode.insertBefore(aboutUsSection, contactForm);
   } else {
-    // If contact form doesn't exist, append to the body (less ideal, but prevents errors)
     document.body.appendChild(aboutUsSection);
   }
 
   // --- Schedule Page (Simulated) ---
-  // This would ideally be on a separate page, but we can simulate it by adding a button that shows/hides a schedule section
   const scheduleButton = document.createElement('button');
   scheduleButton.textContent = 'View Class Schedule';
-  scheduleButton.classList.add('bg-blue-500', 'hover:bg-blue-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'mx-auto', 'block', 'mb-8'); // Added styling
+  scheduleButton.classList.add('bg-blue-500', 'hover:bg-blue-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'mx-auto', 'block', 'mb-8');
 
   const scheduleSection = document.createElement('div');
   scheduleSection.id = 'schedule';
-  scheduleSection.classList.add('container', 'mx-auto', 'py-8', 'hidden'); // Initially hidden
+  scheduleSection.classList.add('container', 'mx-auto', 'py-8', 'hidden');
 
   const scheduleHeading = document.createElement('h2');
   scheduleHeading.textContent = 'Class Schedule';
@@ -214,23 +231,21 @@ document.addEventListener('DOMContentLoaded', function() {
   scheduleSection.appendChild(scheduleHeading);
 
   const scheduleTable = document.createElement('table');
-  scheduleTable.classList.add('table-auto', 'w-full'); // Tailwind table classes
+  scheduleTable.classList.add('table-auto', 'w-full');
 
   const tableHead = document.createElement('thead');
-  tableHead.innerHTML = '<tr><th class="px-4 py-2">Day</th><th class="px-4 py-2">Time</th><th class="px-4 py-2">Class</th></tr>'; // Basic table header
+  tableHead.innerHTML = '<tr><th class="px-4 py-2">Day</th><th class="px-4 py-2">Time</th><th class="px-4 py-2">Class</th></tr>';
   scheduleTable.appendChild(tableHead);
 
   const tableBody = document.createElement('tbody');
-  tableBody.innerHTML = '<tr><td class="border px-4 py-2">Monday</td><td class="border px-4 py-2">9:00 AM</td><td class="border px-4 py-2">Hatha Yoga</td></tr><tr><td class="border px-4 py-2">Tuesday</td><td class="border px-4 py-2">10:30 AM</td><td class="border px-4 py-2">Vinyasa Flow</td></tr>'; // Example table data
+  tableBody.innerHTML = '<tr><td class="border px-4 py-2">Monday</td><td class="border px-4 py-2">9:00 AM</td><td class="border px-4 py-2">Hatha Yoga</td></tr><tr><td class="border px-4 py-2">Tuesday</td><td class="border px-4 py-2">10:30 AM</td><td class="border px-4 py-2">Vinyasa Flow</td></tr>';
   scheduleTable.appendChild(tableBody);
 
   scheduleSection.appendChild(scheduleTable);
 
-  // Append the button and schedule section to the body
   document.body.appendChild(scheduleButton);
   document.body.appendChild(scheduleSection);
 
-  // Add event listener to the button to toggle the schedule section
   scheduleButton.addEventListener('click', () => {
     scheduleSection.classList.toggle('hidden');
   });
