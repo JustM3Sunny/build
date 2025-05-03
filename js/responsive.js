@@ -8,52 +8,60 @@ const breakpoints = {
   xl: 1200, // extra large
 };
 
+// Breakpoint names for clarity and maintainability
+const breakpointNames = {
+  mobile: 'mobile',
+  tablet: 'tablet',
+  desktop: 'desktop',
+  largeDesktop: 'large-desktop',
+};
+
+// Function to determine the current breakpoint
+function getCurrentBreakpoint(windowWidth) {
+  if (windowWidth < breakpoints.sm) {
+    return breakpointNames.mobile;
+  } else if (windowWidth < breakpoints.md) {
+    return breakpointNames.tablet;
+  } else if (windowWidth < breakpoints.lg) {
+    return breakpointNames.desktop;
+  } else {
+    return breakpointNames.largeDesktop;
+  }
+}
+
+
 // Function to handle responsive layout changes
 function handleResponsiveLayout() {
   // Get the current window width
   const windowWidth = window.innerWidth;
 
-  let currentBreakpoint = null;
-
-  if (windowWidth < breakpoints.sm) {
-    currentBreakpoint = 'mobile';
-  } else if (windowWidth < breakpoints.md) {
-    currentBreakpoint = 'tablet';
-  } else if (windowWidth < breakpoints.lg) {
-    currentBreakpoint = 'desktop';
-  } else {
-    currentBreakpoint = 'large-desktop';
-  }
+  // Determine the current breakpoint
+  const currentBreakpoint = getCurrentBreakpoint(windowWidth);
 
   // Apply styles based on the current breakpoint
-  switch (currentBreakpoint) {
-    case 'mobile':
-      applyBreakpointStyles('mobile', adjustMobileNavigation);
-      break;
-    case 'tablet':
-      applyBreakpointStyles('tablet', adjustTabletLayout);
-      break;
-    case 'desktop':
-      applyBreakpointStyles('desktop', adjustDesktopFonts);
-      break;
-    case 'large-desktop':
-      applyBreakpointStyles('large-desktop', adjustLargeDesktopSpacing);
-      break;
-    default:
-      // Handle unexpected cases or do nothing
-      break;
-  }
+  applyBreakpointStyles(currentBreakpoint);
 }
 
-function applyBreakpointStyles(breakpoint, adjustmentFunction) {
+const breakpointActions = {
+    [breakpointNames.mobile]: adjustMobileNavigation,
+    [breakpointNames.tablet]: adjustTabletLayout,
+    [breakpointNames.desktop]: adjustDesktopFonts,
+    [breakpointNames.largeDesktop]: adjustLargeDesktopSpacing,
+};
+
+function applyBreakpointStyles(breakpoint) {
   // Remove existing breakpoint classes
-  document.body.classList.remove('mobile', 'tablet', 'desktop', 'large-desktop');
+  Object.values(breakpointNames).forEach(name => document.body.classList.remove(name));
 
   // Add the current breakpoint class
   document.body.classList.add(breakpoint);
 
   // Call the specific adjustment function
-  adjustmentFunction();
+  if (breakpointActions[breakpoint]) {
+    breakpointActions[breakpoint]();
+  } else {
+    console.warn(`No action defined for breakpoint: ${breakpoint}`);
+  }
 }
 
 

@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (classesContainer) {
     const classesData = [
       { name: 'Hatha Yoga', time: '9:00 AM', description: 'Gentle introduction to yoga.' },
-      { name: 'Vinyasa Flow', time: '10:30 AM', description: 'Dynamic and flowing practice.' },
+      { name: 'Vinyasa Flow', time: '10:30 AM', 'description': 'Dynamic and flowing practice.' },
       { name: 'Restorative Yoga', time: '6:00 PM', description: 'Relaxing and rejuvenating session.' },
       { name: 'Ashtanga Yoga', time: '7:30 AM', description: 'A rigorous and dynamic style of yoga.' },
       { name: 'Yin Yoga', time: '7:00 PM', description: 'A slow-paced style of yoga with long-held poses.' }
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fragment = document.createDocumentFragment();
 
     data.forEach(itemData => {
-      const element = createElement(itemData, itemClassName);
+      const element = createElement(itemData); // Removed itemClassName as it's already in the createElement functions
       fragment.appendChild(element);
     });
 
@@ -160,12 +160,16 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      console.log('Form submitted:', { name, email, message });
-
-      setTimeout(() => {
-        alert('Thank you for your message! We will get back to you soon.');
-        form.reset();
-      }, config.formSubmissionDelay);
+      // Simulate form submission to a server (replace with actual API call)
+      simulateFormSubmission({ name, email, message })
+        .then(() => {
+          alert('Thank you for your message! We will get back to you soon.');
+          form.reset();
+        })
+        .catch(error => {
+          console.error('Form submission failed:', error);
+          alert('Form submission failed. Please try again later.');
+        });
     });
   }
 
@@ -182,6 +186,21 @@ document.addEventListener('DOMContentLoaded', function() {
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  }
+
+  // Simulate form submission (replace with actual API call)
+  function simulateFormSubmission(data) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // Simulate success or failure based on some condition (e.g., email contains "error")
+        if (data.email.includes('error')) {
+          reject(new Error('Simulated server error'));
+        } else {
+          console.log('Form data submitted to server (simulated):', data);
+          resolve();
+        }
+      }, config.formSubmissionDelay);
+    });
   }
 
   // --- Mobile Navigation ---

@@ -118,9 +118,15 @@ async function handleContactFormSubmit(event) {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        const errorMessage = errorData.message || `HTTP error! status: ${response.status}`;
-        throw new Error(errorMessage);
+        try {
+          const errorData = await response.json();
+          const errorMessage = errorData.message || `HTTP error! status: ${response.status}`;
+          throw new Error(errorMessage);
+        } catch (jsonError) {
+          // Handle cases where the server returns a non-JSON error response
+          const errorMessage = `HTTP error! status: ${response.status}.  Could not parse error message.`;
+          throw new Error(errorMessage);
+        }
       }
 
       const result = await response.json(); // Assuming the API returns JSON
