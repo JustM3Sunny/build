@@ -49,7 +49,13 @@ const breakpointActions = {
     [breakpointNames.largeDesktop]: adjustLargeDesktopSpacing,
 };
 
+let previousBreakpoint = null; // Store the previous breakpoint
+
 function applyBreakpointStyles(breakpoint) {
+  if (breakpoint === previousBreakpoint) {
+    return; // Avoid unnecessary updates
+  }
+
   // Remove existing breakpoint classes
   Object.values(breakpointNames).forEach(name => document.body.classList.remove(name));
 
@@ -62,6 +68,8 @@ function applyBreakpointStyles(breakpoint) {
   } else {
     console.warn(`No action defined for breakpoint: ${breakpoint}`);
   }
+
+  previousBreakpoint = breakpoint; // Update the previous breakpoint
 }
 
 
@@ -101,7 +109,20 @@ function adjustLargeDesktopSpacing() {
 
 
 // Add event listener to window resize event
-window.addEventListener('resize', handleResponsiveLayout);
+// Debounce the resize event to improve performance
+function debounce(func, delay) {
+  let timeout;
+  return function() {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), delay);
+  };
+}
+
+const debouncedHandleResponsiveLayout = debounce(handleResponsiveLayout, 100); // Adjust delay as needed
+
+window.addEventListener('resize', debouncedHandleResponsiveLayout);
 
 // Initialize responsive layout on page load
 handleResponsiveLayout();

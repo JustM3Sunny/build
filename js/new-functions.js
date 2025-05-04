@@ -57,20 +57,22 @@ function addSectionAndPage(containerId) {
   const newPage = document.createElement('div');
   newPage.className = 'page';
 
-  // Use createTextNode and appendChild for better security and performance
-  const sectionHeading = document.createElement('h2');
-  sectionHeading.appendChild(document.createTextNode('New Section'));
-  const sectionParagraph = document.createElement('p');
-  sectionParagraph.appendChild(document.createTextNode('This is a new section.'));
+  // Helper function to create elements with text content
+  const createElementWithText = (tag, text) => {
+    const element = document.createElement(tag);
+    element.textContent = text; // Use textContent for security and simplicity
+    return element;
+  };
+
+  const sectionHeading = createElementWithText('h2', 'New Section');
+  const sectionParagraph = createElementWithText('p', 'This is a new section.');
   const sectionContent = document.createElement('div');
   sectionContent.appendChild(sectionHeading);
   sectionContent.appendChild(sectionParagraph);
   newSection.appendChild(sectionContent);
 
-  const pageHeading = document.createElement('h2');
-  pageHeading.appendChild(document.createTextNode('New Page'));
-  const pageParagraph = document.createElement('p');
-  pageParagraph.appendChild(document.createTextNode('This is a new page.'));
+  const pageHeading = createElementWithText('h2', 'New Page');
+  const pageParagraph = createElementWithText('p', 'This is a new page.');
   const pageContent = document.createElement('div');
   pageContent.appendChild(pageHeading);
   pageContent.appendChild(pageParagraph);

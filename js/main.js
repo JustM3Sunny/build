@@ -67,13 +67,13 @@ document.addEventListener('DOMContentLoaded', function() {
   if (classesContainer) {
     const classesData = [
       { name: 'Hatha Yoga', time: '9:00 AM', description: 'Gentle introduction to yoga.' },
-      { name: 'Vinyasa Flow', time: '10:30 AM', 'description': 'Dynamic and flowing practice.' },
+      { name: 'Vinyasa Flow', time: '10:30 AM', description: 'Dynamic and flowing practice.' },
       { name: 'Restorative Yoga', time: '6:00 PM', description: 'Relaxing and rejuvenating session.' },
       { name: 'Ashtanga Yoga', time: '7:30 AM', description: 'A rigorous and dynamic style of yoga.' },
       { name: 'Yin Yoga', time: '7:00 PM', description: 'A slow-paced style of yoga with long-held poses.' }
     ];
 
-    renderSection(classesContainer, classesData, createClassElement, 'class-item');
+    renderSection(classesContainer, classesData, createClassElement);
   }
 
   // --- Testimonials Section ---
@@ -85,15 +85,15 @@ document.addEventListener('DOMContentLoaded', function() {
       { author: 'Alice Brown', text: 'I highly recommend this yoga studio to everyone!' }
     ];
 
-    renderSection(testimonialsContainer, testimonialsData, createTestimonialElement, 'testimonial-item');
+    renderSection(testimonialsContainer, testimonialsData, createTestimonialElement);
   }
 
-  function renderSection(container, data, createElement, itemClassName) {
+  function renderSection(container, data, createElement) {
     container.innerHTML = '';
     const fragment = document.createDocumentFragment();
 
     data.forEach(itemData => {
-      const element = createElement(itemData); // Removed itemClassName as it's already in the createElement functions
+      const element = createElement(itemData);
       fragment.appendChild(element);
     });
 

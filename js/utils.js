@@ -118,15 +118,15 @@ async function handleContactFormSubmit(event) {
       });
 
       if (!response.ok) {
+        let errorMessage = `HTTP error! status: ${response.status}`;
         try {
           const errorData = await response.json();
-          const errorMessage = errorData.message || `HTTP error! status: ${response.status}`;
-          throw new Error(errorMessage);
+          errorMessage = errorData.message || errorMessage;
         } catch (jsonError) {
-          // Handle cases where the server returns a non-JSON error response
-          const errorMessage = `HTTP error! status: ${response.status}.  Could not parse error message.`;
-          throw new Error(errorMessage);
+          console.warn("Failed to parse JSON error response:", jsonError);
+          // Keep the generic HTTP error message
         }
+        throw new Error(errorMessage);
       }
 
       const result = await response.json(); // Assuming the API returns JSON
