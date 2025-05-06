@@ -160,6 +160,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
+      // Disable the submit button to prevent multiple submissions
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) {
+          submitButton.disabled = true;
+      }
+
       // Simulate form submission to a server (replace with actual API call)
       simulateFormSubmission({ name, email, message })
         .then(() => {
@@ -169,6 +175,12 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
           console.error('Form submission failed:', error);
           alert('Form submission failed. Please try again later.');
+        })
+        .finally(() => {
+          // Re-enable the submit button after submission (success or failure)
+          if (submitButton) {
+              submitButton.disabled = false;
+          }
         });
     });
   }

@@ -56,8 +56,9 @@ function applyBreakpointStyles(breakpoint) {
     return; // Avoid unnecessary updates
   }
 
-  // Remove existing breakpoint classes
-  Object.values(breakpointNames).forEach(name => document.body.classList.remove(name));
+  // Remove existing breakpoint classes.  Use a more efficient method.
+  document.body.classList.remove(...Object.values(breakpointNames));
+
 
   // Add the current breakpoint class
   document.body.classList.add(breakpoint);
@@ -76,35 +77,45 @@ function applyBreakpointStyles(breakpoint) {
 // Function to adjust mobile navigation (example)
 function adjustMobileNavigation() {
   // Add your mobile navigation logic here
-  // For example, show a hamburger menu
   console.log("Mobile navigation adjustments");
-  // You might want to toggle a class on a navigation element
-  // document.getElementById('main-nav').classList.toggle('mobile-nav');
+  // Example:
+  // const nav = document.getElementById('main-nav');
+  // if (nav) {
+  //   nav.classList.toggle('mobile-nav');
+  // }
 }
 
 // Function to adjust tablet layout (example)
 function adjustTabletLayout() {
   // Add your tablet layout logic here
-  // For example, change the number of columns in a grid
   console.log("Tablet layout adjustments");
-  // You might want to adjust grid column counts
-  // document.getElementById('content-grid').classList.add('tablet-grid');
+  // Example:
+  // const grid = document.getElementById('content-grid');
+  // if (grid) {
+  //   grid.classList.add('tablet-grid');
+  // }
 }
 
 // Function to adjust desktop fonts (example)
 function adjustDesktopFonts() {
   // Add your desktop font adjustments here
   console.log("Desktop font adjustments");
-  // You might want to change the font size of headings
-  // document.querySelector('h1').style.fontSize = '2.5em';
+  // Example:
+  // const heading = document.querySelector('h1');
+  // if (heading) {
+  //   heading.style.fontSize = '2.5em';
+  // }
 }
 
 // Function to adjust spacing for large desktops (example)
 function adjustLargeDesktopSpacing() {
   // Add your large desktop spacing adjustments here
   console.log("Large desktop spacing adjustments");
-  // You might want to increase the padding around elements
-  // document.getElementById('main-content').style.padding = '2em';
+  // Example:
+  // const content = document.getElementById('main-content');
+  // if (content) {
+  //   content.style.padding = '2em';
+  // }
 }
 
 
@@ -112,9 +123,8 @@ function adjustLargeDesktopSpacing() {
 // Debounce the resize event to improve performance
 function debounce(func, delay) {
   let timeout;
-  return function() {
+  return function(...args) { // Use rest parameter for arguments
     const context = this;
-    const args = arguments;
     clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(context, args), delay);
   };

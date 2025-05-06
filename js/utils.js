@@ -119,8 +119,9 @@ async function handleContactFormSubmit(event) {
 
       if (!response.ok) {
         let errorMessage = `HTTP error! status: ${response.status}`;
+        let errorData;
         try {
-          const errorData = await response.json();
+          errorData = await response.json();
           errorMessage = errorData.message || errorMessage;
         } catch (jsonError) {
           console.warn("Failed to parse JSON error response:", jsonError);

@@ -10,14 +10,14 @@ function makeResponsive() {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    sections.forEach(element => {
-      element.style.width = `${viewportWidth}px`;
-      element.style.height = `${viewportHeight}px`;
+    sections.forEach(section => {
+      section.style.width = `${viewportWidth}px`;
+      section.style.height = `${viewportHeight}px`;
     });
 
-    pages.forEach(element => {
-      element.style.width = `${viewportWidth}px`;
-      element.style.height = `${viewportHeight}px`;
+    pages.forEach(page => {
+      page.style.width = `${viewportWidth}px`;
+      page.style.height = `${viewportHeight}px`;
     });
   };
 
@@ -33,15 +33,20 @@ function makeResponsive() {
 
   window.addEventListener('resize', debouncedResizeHandler);
 
-  // Consider using ResizeObserver API for more robust responsiveness if needed.
-  // Example:
-  // const resizeObserver = new ResizeObserver(entries => {
-  //   for (let entry of entries) {
-  //     // Update element styles based on entry.contentRect
-  //   }
-  // });
-  // sections.forEach(section => resizeObserver.observe(section));
-  // pages.forEach(page => resizeObserver.observe(page));
+  // Using ResizeObserver API for more robust responsiveness
+  const resizeObserver = new ResizeObserver(entries => {
+    for (const entry of entries) {
+      const element = entry.target;
+      element.style.width = `${entry.contentRect.width}px`;
+      element.style.height = `${entry.contentRect.height}px`;
+    }
+  });
+
+  sections.forEach(section => resizeObserver.observe(section));
+  pages.forEach(page => resizeObserver.observe(page));
+
+  // Clean up the initial resize event listener after ResizeObserver is set up
+  window.removeEventListener('resize', debouncedResizeHandler);
 }
 
 // Function to add a section and a page
@@ -66,17 +71,13 @@ function addSectionAndPage(containerId) {
 
   const sectionHeading = createElementWithText('h2', 'New Section');
   const sectionParagraph = createElementWithText('p', 'This is a new section.');
-  const sectionContent = document.createElement('div');
-  sectionContent.appendChild(sectionHeading);
-  sectionContent.appendChild(sectionParagraph);
-  newSection.appendChild(sectionContent);
+  newSection.appendChild(sectionHeading);
+  newSection.appendChild(sectionParagraph);
 
   const pageHeading = createElementWithText('h2', 'New Page');
   const pageParagraph = createElementWithText('p', 'This is a new page.');
-  const pageContent = document.createElement('div');
-  pageContent.appendChild(pageHeading);
-  pageContent.appendChild(pageParagraph);
-  newPage.appendChild(pageContent);
+  newPage.appendChild(pageHeading);
+  newPage.appendChild(pageParagraph);
 
   mainContainer.appendChild(newSection);
   mainContainer.appendChild(newPage);
